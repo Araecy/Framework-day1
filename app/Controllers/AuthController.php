@@ -9,7 +9,7 @@ use Araecy\Framework\Http\Response;
 class AuthController extends AbstractController
 {
     private const ADMIN_USERNAME = 'admin';
-    private const ADMIN_PASSWORD = '#1Geheimv';
+    private const ADMIN_PASSWORD = '#1Geheim';
 
     public function create(): Response
     {

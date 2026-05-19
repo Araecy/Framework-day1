@@ -78,7 +78,7 @@ De klant wil een webapplicatie waarmee fans zich kunnen inschrijven voor dit eve
 
 **Admin-pagina (`/admin`)**
 - Toegankelijk met een vooraf bepaalde login:
-  - Gebruikersnaam: `admin` | Wachtwoord: `#1Geheimv`
+  - Gebruikersnaam: `admin` | Wachtwoord: `#1Geheim`
 - Overzicht van alle inschrijvingen.
 - Admin kan afzonderlijke inschrijvingen verwijderen.
 
