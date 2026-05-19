@@ -1,29 +1,51 @@
-<!DOCTYPE html>
-<html lang="nl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inloggen — WK Finale</title>
-</head>
-<body>
-    <h1>Inloggen</h1>
+{% extends 'layout.html.twig' %}
 
-    {% if error is defined %}
-        <p>{{ error }}</p>
-    {% endif %}
+{% block title %}Inloggen{% endblock %}
 
-    <form action="/login" method="post">
-        <div>
-            <label for="email">E-mailadres</label>
-            <input type="text" name="email" id="email" required>
-        </div>
-        <div>
-            <label for="wachtwoord">Wachtwoord</label>
-            <input type="password" name="wachtwoord" id="wachtwoord" required>
-        </div>
-        <button type="submit">Inloggen</button>
-    </form>
+{% block styles %}
+<link rel="stylesheet" href="/css/login.css">
+{% endblock %}
 
-    <p>Nog niet ingeschreven? <a href="/register">Inschrijven</a></p>
-</body>
-</html>
+{% block content %}
+<div class="login-wrapper">
+    <div class="wk-card login-card">
+        <p class="wk-mono mb-2">welkom terug</p>
+        <p class="wk-display mb-4" style="font-size:2rem">Inloggen</p>
+
+        {% if flash_registration is defined %}
+            <div class="wk-alert wk-alert-success mb-4">
+                <strong>Inschrijving ontvangen!</strong><br>
+                Een bevestiging is verstuurd naar <strong>{{ flash_registration }}</strong>.
+            </div>
+        {% endif %}
+
+        {% if error is defined %}
+            <div class="wk-alert wk-alert-error mb-4">{{ error }}</div>
+        {% endif %}
+
+        <form action="/login" method="post">
+            <div class="mb-3">
+                <label for="email" class="wk-label">E-mailadres</label>
+                <input type="text" class="wk-input" name="email" id="email"
+                       autocomplete="email" required>
+            </div>
+            <div class="mb-3">
+                <label for="wachtwoord" class="wk-label">Wachtwoord</label>
+                <input type="password" class="wk-input" name="wachtwoord" id="wachtwoord"
+                       autocomplete="current-password" required>
+            </div>
+            <div class="mt-4">
+                <button type="submit" class="wk-btn wk-btn-primary wk-btn-lg w-100">
+                    INLOGGEN
+                </button>
+            </div>
+        </form>
+
+        <hr class="wk-rule" style="margin:1.25rem 0">
+
+        <p class="text-center mb-0" style="font-size:0.875rem; color:var(--wk-muted)">
+            Nog niet ingeschreven? <a href="/register">Inschrijven</a>
+        </p>
+    </div>
+</div>
+{% endblock %}

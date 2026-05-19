@@ -2,16 +2,13 @@
 
 use App\Controllers\AdminController;
 use App\Controllers\AuthController;
-use App\Controllers\BookController;
 use App\Controllers\FanController;
 use App\Controllers\HomeController;
 use App\Controllers\RegistrationController;
 
 return [
     ['GET', '/', [HomeController::class, 'index']],
-    ['GET', '/books/{id:\d+}', [BookController::class, 'show']],
-    ['GET', '/books/create', [BookController::class, 'create']],
-    ['POST', '/books', [BookController::class, 'store']],
+    ['GET', '/test', [HomeController::class, 'test']],
 
     ['GET', '/register', [RegistrationController::class, 'create']],
     ['POST', '/register', [RegistrationController::class, 'store']],
@@ -26,4 +23,5 @@ return [
 
     ['GET', '/admin', [AdminController::class, 'index']],
     ['POST', '/admin/accounts/{id:\d+}/delete', [AdminController::class, 'destroy']],
+    ['POST', '/admin/accounts/{id:\d+}/approve-ticket', [AdminController::class, 'approveTicket']],
 ];

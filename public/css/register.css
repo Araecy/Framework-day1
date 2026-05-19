@@ -1,0 +1,20 @@
+/* register.css - page-specific layout only */
+
+.register-ticket-rows {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.register-ticket-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    font-size: 0.9rem;
+}
+
+.register-ticket-row .wk-mono {
+    display: inline;
+}

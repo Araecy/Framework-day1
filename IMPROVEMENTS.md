@@ -1,5 +1,5 @@
 # Verbetervoorstellen & Overwegingen
-### Beroepsexamen K1 — Voorbereide analyse
+### Beroepsexamen K1 - Voorbereide analyse
 
 **Student:** Noah Wijnman
 **Datum:** 2026-05-18
@@ -14,9 +14,9 @@ overwegingen voor het behalen van een "Goed"-beoordeling.
 Dit zijn concrete problemen of ontbrekende onderdelen die al aanwezig zijn vóór de casus bekend is.
 Ze moeten worden opgelost tijdens de realisatiefase (Opdracht 2).
 
-### 1.1 `BookController::store()` — debug-code verwijderen voor oplevering
+### 1.1 `BookController::store()` - debug-code verwijderen voor oplevering
 
-**Bestand:** [app/Controllers/BookController.php](app/Controllers/BookController.php) — regel 26
+**Bestand:** [app/Controllers/BookController.php](app/Controllers/BookController.php) - regel 26
 
 **Notitie:** De uitgecommentarieerde `dd()`-aanroep en de actieve `dd($book)` zijn aanwezig
 als tijdelijke debug-helpers tijdens de voorbereiding. Deze worden verwijderd vóór oplevering.
@@ -43,14 +43,14 @@ public function store(): Response
 
 ---
 
-### 1.2 Ontbrekende CRUD-operaties — Read (list), Update, Delete
+### 1.2 Ontbrekende CRUD-operaties - Read (list), Update, Delete
 
 **Probleem:** Op dit moment zijn alleen Create (formulier + store) en een rudimentaire Show
 geïmplementeerd. Voor een complete CRUD-applicatie ontbreken:
 
 | Operatie | Status | Wat ontbreekt |
 |----------|--------|--------------|
-| **C**reate | Deels — `store()` slaat niet op (zie 1.1) | `save()` aanroepen, redirect |
+| **C**reate | Deels - `store()` slaat niet op (zie 1.1) | `save()` aanroepen, redirect |
 | **R**ead (lijst) | Ontbreekt | `index()`-methode, `Book::all()`, lijsttemplate |
 | **R**ead (detail) | Template bestaat maar is leeg | Template vullen met data, `Book::find($id)` |
 | **U**pdate | Volledig ontbreekt | `edit()`, `update()`, `Book::update()`, formuliertemplate |
@@ -58,7 +58,7 @@ geïmplementeerd. Voor een complete CRUD-applicatie ontbreken:
 
 **Oplossingen per operatie:**
 
-**Read (lijst) — `Book::all()`:**
+**Read (lijst) - `Book::all()`:**
 ```php
 public static function all(): array
 {
@@ -68,7 +68,7 @@ public static function all(): array
 }
 ```
 
-**Read (detail) — `Book::find($id)`:**
+**Read (detail) - `Book::find($id)`:**
 ```php
 public static function find(int $id): ?array
 {
@@ -80,7 +80,7 @@ public static function find(int $id): ?array
 }
 ```
 
-**Update — `Book::update()`:**
+**Update - `Book::update()`:**
 ```php
 public function update(): void
 {
@@ -96,7 +96,7 @@ public function update(): void
 }
 ```
 
-**Delete — `Book::delete($id)`:**
+**Delete - `Book::delete($id)`:**
 ```php
 public static function delete(int $id): void
 {
@@ -114,10 +114,10 @@ public static function delete(int $id): void
 ### 1.3 Ontbrekende invoervalidatie
 
 **Probleem:** Er is geen validatie van POST-invoer. Als een veld leeg wordt verzonden,
-wordt een lege string opgeslagen — of PHP gooit een fout bij `getPostParams()` als
+wordt een lege string opgeslagen - of PHP gooit een fout bij `getPostParams()` als
 de sleutel niet bestaat.
 
-**Oplossing — minimale validatie in controller:**
+**Oplossing - minimale validatie in controller:**
 ```php
 public function store(): Response
 {
@@ -177,7 +177,7 @@ if ($status === FastRoute\Dispatcher::METHOD_NOT_ALLOWED) {
 
 **Probleem:** Het wachtwoord ontbreekt in de connection string. PDO verwacht het wachtwoord
 als derde argument in de constructor, niet in de DSN-string. In de `Connection`-klasse
-wordt de volledige DSN als enige argument doorgegeven — er is geen ondersteuning voor
+wordt de volledige DSN als enige argument doorgegeven - er is geen ondersteuning voor
 aparte user/password parameters.
 
 **Actie op examendag:** De schoolserver via Plesk heeft een eigen databasegebruiker met wachtwoord.
@@ -207,9 +207,9 @@ private function __construct(string $dsn, string $user, string $password)
 
 ### 1.6 Typo in `Connection.php`
 
-**Bestand:** [src/Database/Connection.php](src/Database/Connection.php) — regel 7
+**Bestand:** [src/Database/Connection.php](src/Database/Connection.php) - regel 7
 
-**Probleem:** `private static $instence = null;` — `instence` is een schrijffout van `instance`.
+**Probleem:** `private static $instence = null;` - `instence` is een schrijffout van `instance`.
 
 **Oplossing:** Hernoem naar `$instance` (pas alle verwijzingen aan in hetzelfde bestand).
 
@@ -255,7 +255,7 @@ scenario's voor de casus, met overwegingen per type.
 
 ### 2.1 Blog / Nieuwsplatform
 
-**Geschiktheid:** Uitstekend — het schema past perfect.
+**Geschiktheid:** Uitstekend - het schema past perfect.
 - `type` → categorie of berichttype (nieuws, blog, aankondiging)
 - `title` → berichttitel
 - `body` → berichtinhoud
@@ -272,7 +272,7 @@ scenario's voor de casus, met overwegingen per type.
 
 ### 2.2 Takenlijst / To-Do Applicatie
 
-**Geschiktheid:** Goed — minimale aanpassingen nodig.
+**Geschiktheid:** Goed - minimale aanpassingen nodig.
 - `type` → prioriteit of categorie (hoog, middel, laag)
 - `title` → taaknaam
 - `body` → taakomschrijving
@@ -304,7 +304,7 @@ scenario's voor de casus, met overwegingen per type.
 
 ### 2.4 Evenementenbeheer
 
-**Geschiktheid:** Redelijk — extra velden nodig.
+**Geschiktheid:** Redelijk - extra velden nodig.
 - `type` → type evenement
 - `title` → naam evenement
 - `body` → beschrijving
@@ -322,7 +322,7 @@ over alle drie opdrachten. De volgende punten verhogen de kwaliteit bovenop "Vol
 | Categorie | Aanbeveling | Impact |
 |-----------|------------|--------|
 | **Ontwerp** | Voeg een ERD (Entity Relationship Diagram) toe aan het ontwerp naast de wireframes | Toont volledigheid van het technisch ontwerp |
-| **Code-kwaliteit** | Gebruik PHP DocBlocks bij elke publieke methode — `@param`, `@return` | Voldoet aan code-conventies en verhoogt leesbaarheid |
+| **Code-kwaliteit** | Gebruik PHP DocBlocks bij elke publieke methode - `@param`, `@return` | Voldoet aan code-conventies en verhoogt leesbaarheid |
 | **Beveiliging** | Voeg CSRF-token toe aan formulieren (sessie-gebaseerd) | Toont inzicht in webbeveiliging beyond de basis |
 | **Testdiepte** | Test ook edge cases: maximale invoerlengte, speciale tekens, lege database | Toont grondige testaanpak |
 | **Verbetervoorstel** | Geef concrete tijdsindicaties per verbetering in uren (niet "later" of "enige tijd") | Voldoet volledig aan criterium 5 van Opdracht 3 |
@@ -331,22 +331,22 @@ over alle drie opdrachten. De volgende punten verhogen de kwaliteit bovenop "Vol
 
 ---
 
-## 4. Samenvatting — Prioriteitenlijst voor examendag
+## 4. Samenvatting - Prioriteitenlijst voor examendag
 
 Op volgorde van belang voor het behalen van een voldoende:
 
-1. `Connection::create()` uitbreiden met user/password parameters — **kritiek voor Plesk-deployment**
-2. `database/config.php` bijwerken met de Plesk-databasecredentials (host, dbname, user, password) — **kritiek**
-3. Debug-code (`dd()`) verwijderen en `$book->save()` activeren in `store()` — **vóór oplevering**
-4. `Book::all()` implementeren en lijstpagina maken — **kritiek voor UC-01**
-5. `Book::find($id)` implementeren en detailpagina vullen — **hoog**
-6. Foutafhandeling in `Kernel::handle()` voor 404 — **hoog**
-7. Invoervalidatie toevoegen in `store()` — **hoog**
-8. Update-functionaliteit toevoegen — **middel**
-9. Delete-functionaliteit toevoegen — **middel**
-10. Basisopmaak via Twig base-template + CDN CSS — **middel**
-11. Typo in `Connection.php` (`$instence` → `$instance`) — **laag**
-12. Testplan en testrapport invullen op dag 3 — **vereist voor Opdracht 3**
+1. `Connection::create()` uitbreiden met user/password parameters - **kritiek voor Plesk-deployment**
+2. `database/config.php` bijwerken met de Plesk-databasecredentials (host, dbname, user, password) - **kritiek**
+3. Debug-code (`dd()`) verwijderen en `$book->save()` activeren in `store()` - **vóór oplevering**
+4. `Book::all()` implementeren en lijstpagina maken - **kritiek voor UC-01**
+5. `Book::find($id)` implementeren en detailpagina vullen - **hoog**
+6. Foutafhandeling in `Kernel::handle()` voor 404 - **hoog**
+7. Invoervalidatie toevoegen in `store()` - **hoog**
+8. Update-functionaliteit toevoegen - **middel**
+9. Delete-functionaliteit toevoegen - **middel**
+10. Basisopmaak via Twig base-template + CDN CSS - **middel**
+11. Typo in `Connection.php` (`$instence` → `$instance`) - **laag**
+12. Testplan en testrapport invullen op dag 3 - **vereist voor Opdracht 3**
 
 ---
 

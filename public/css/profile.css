@@ -1,0 +1,5 @@
+/* profile.css - page-specific layout only */
+
+.profile-ticket {
+    border-left: 3px solid var(--wk-accent);
+}

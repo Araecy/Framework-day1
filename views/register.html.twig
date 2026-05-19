@@ -1,68 +1,128 @@
-<!DOCTYPE html>
-<html lang="nl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inschrijven — WK Finale</title>
-</head>
-<body>
-    <h1>Inschrijven — WK Finale</h1>
+{% extends 'layout.html.twig' %}
 
-    <!-- ticket display (price and veneu information) -->
-     <!-- layout left form right ticket display -->
+{% block title %}Inschrijven{% endblock %}
 
-    {% if errors is defined and errors|length > 0 %}
-        <ul>
-            {% for error in errors %}
-                <li>{{ error }}</li>
-            {% endfor %}
-        </ul>
-    {% endif %}
+{% block styles %}
+<link rel="stylesheet" href="/css/register.css">
+{% endblock %}
 
-    <form action="/register" method="post">
-        <div>
-            <label for="naam">Naam</label>
-            <input type="text" name="naam" id="naam" required>
-        </div>
-        <div>
-            <label for="adres">Adres</label>
-            <input type="text" name="adres" id="adres" required>
-        </div>
-        <div>
-            <label for="woonplaats">Woonplaats</label>
-            <input type="text" name="woonplaats" id="woonplaats" required>
-        </div>
-        <div>
-            <label for="telefoonnummer">Telefoonnummer</label>
-            <input type="tel" name="telefoonnummer" id="telefoonnummer" required>
-        </div>
-        <div>
-            <label for="email">E-mailadres</label>
-            <input type="email" name="email" id="email" required>
-        </div>
-        <div>
-            <label for="geboortedatum">Geboortedatum</label>
-            <input type="date" name="geboortedatum" id="geboortedatum" required>
-        </div>
-        <div>
-            <label for="geslacht">Geslacht</label>
-            <select name="geslacht" id="geslacht">
-                <option value="man">Man</option>
-                <option value="vrouw">Vrouw</option>
-                <option value="anders">Anders</option>
-            </select>
-        </div>
-        <div>
-            <label for="wachtwoord">Wachtwoord</label>
-            <input type="password" name="wachtwoord" id="wachtwoord" required>
-        </div>
-        <div>
-            <label for="wachtwoord_herhaal">Herhaal wachtwoord</label>
-            <input type="password" name="wachtwoord_herhaal" id="wachtwoord_herhaal" required>
-        </div>
-        <button type="submit">Inschrijven</button>
-    </form>
+{% block content %}
+<div class="row g-4">
 
-    <p>Al ingeschreven? <a href="/login">Inloggen</a></p>
-</body>
-</html>
+    {# - Left: registration form - #}
+    <div class="col-lg-7">
+        <div class="wk-card">
+            <div class="wk-card-header">Inschrijven - WK Finale</div>
+
+            {% if errors is defined and errors|length > 0 %}
+                <div class="wk-alert wk-alert-error mb-4">
+                    <ul>
+                        {% for error in errors %}
+                            <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+
+            <form action="/register" method="post" novalidate>
+                <div class="row g-3">
+                    <div class="col-12">
+                        <label for="naam" class="wk-label">Naam <span class="wk-required">*</span></label>
+                        <input type="text" class="wk-input" name="naam" id="naam"
+                               value="{{ old.naam ?? '' }}" required>
+                    </div>
+                    <div class="col-12">
+                        <label for="adres" class="wk-label">Adres <span class="wk-required">*</span></label>
+                        <input type="text" class="wk-input" name="adres" id="adres"
+                               value="{{ old.adres ?? '' }}" required>
+                    </div>
+                    <div class="col-12">
+                        <label for="woonplaats" class="wk-label">Woonplaats <span class="wk-required">*</span></label>
+                        <input type="text" class="wk-input" name="woonplaats" id="woonplaats"
+                               value="{{ old.woonplaats ?? '' }}" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="telefoonnummer" class="wk-label">Telefoonnummer <span class="wk-required">*</span></label>
+                        <input type="tel" class="wk-input" name="telefoonnummer" id="telefoonnummer"
+                               value="{{ old.telefoonnummer ?? '' }}" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="email" class="wk-label">E-mailadres <span class="wk-required">*</span></label>
+                        <input type="email" class="wk-input" name="email" id="email"
+                               value="{{ old.email ?? '' }}" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="geboortedatum" class="wk-label">Geboortedatum <span class="wk-required">*</span></label>
+                        <input type="date" class="wk-input" name="geboortedatum" id="geboortedatum"
+                               value="{{ old.geboortedatum ?? '' }}" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="geslacht" class="wk-label">Geslacht <span class="wk-required">*</span></label>
+                        <select class="wk-input" name="geslacht" id="geslacht">
+                            <option value="man"   {{ (old.geslacht ?? '') == 'man'   ? 'selected' : '' }}>Man</option>
+                            <option value="vrouw" {{ (old.geslacht ?? '') == 'vrouw' ? 'selected' : '' }}>Vrouw</option>
+                            <option value="anders"{{ (old.geslacht ?? '') == 'anders'? 'selected' : '' }}>Anders</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="wachtwoord" class="wk-label">Wachtwoord <span class="wk-required">*</span></label>
+                        <input type="password" class="wk-input" name="wachtwoord" id="wachtwoord"
+                               required minlength="8">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="wachtwoord_herhaal" class="wk-label">Herhaal wachtwoord <span class="wk-required">*</span></label>
+                        <input type="password" class="wk-input" name="wachtwoord_herhaal"
+                               id="wachtwoord_herhaal" required>
+                    </div>
+                </div>
+
+                <div class="mt-4">
+                    <button type="submit" class="wk-btn wk-btn-primary wk-btn-lg w-100">
+                        INSCHRIJVEN
+                    </button>
+                </div>
+            </form>
+
+            <p class="text-center mt-3 mb-0" style="font-size:0.875rem; color:var(--wk-muted)">
+                Al ingeschreven? <a href="/login">Inloggen</a>
+            </p>
+        </div>
+    </div>
+
+    {# - Right: ticket summary card - #}
+    <div class="col-lg-5 d-flex">
+        <div class="wk-card register-ticket w-100">
+            <p class="wk-mono mb-3">Jouw ticket</p>
+            <p class="wk-display mb-2" style="font-size:1.6rem">WK Voetbal Finale 2026</p>
+
+            <hr class="wk-rule" style="margin:1rem 0">
+
+            <div class="register-ticket-rows">
+                <div class="register-ticket-row">
+                    <span class="wk-mono">Datum</span>
+                    <span>Zondag 19 juli 2026</span>
+                </div>
+                <div class="register-ticket-row">
+                    <span class="wk-mono">Locatie</span>
+                    <span>Stadion de Kuip, Rotterdam</span>
+                </div>
+                <div class="register-ticket-row">
+                    <span class="wk-mono">Deuren open</span>
+                    <span>14:00 uur</span>
+                </div>
+                <div class="register-ticket-row">
+                    <span class="wk-mono">Capaciteit</span>
+                    <span>1.000 plaatsen</span>
+                </div>
+            </div>
+
+            <hr class="wk-rule" style="margin:1rem 0">
+
+            <p class="mb-0" style="font-size:0.85rem; color:var(--wk-muted); line-height:1.5">
+                Na inschrijving ontvang je een bevestiging op je e-mailadres.
+            </p>
+        </div>
+    </div>
+
+</div>
+{% endblock %}

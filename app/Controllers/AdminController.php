@@ -35,4 +35,19 @@ class AdminController extends AbstractController
 
         return Response::redirect('/admin');
     }
+
+    public function approveTicket(string $id): Response
+    {
+        if (empty($_SESSION['is_admin'])) {
+            return Response::redirect('/login');
+        }
+
+        $account = Account::findById((int) $id);
+        if ($account !== null) {
+            $account->setHasTicket(true);
+            $account->save();
+        }
+
+        return Response::redirect('/admin');
+    }
 }

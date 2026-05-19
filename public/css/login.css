@@ -1,0 +1,12 @@
+/* login.css - page-specific layout only */
+
+.login-wrapper {
+    display: flex;
+    justify-content: center;
+    padding: 1rem 0;
+}
+
+.login-card {
+    width: 100%;
+    max-width: 460px;
+}

@@ -1,1 +1,127 @@
-<h1>Hello world!!!</h1>
+{% extends 'layout.html.twig' %}
+
+{% block title %}WK Voetbal Finale 2026{% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="/css/home.css">
+{% endblock %}
+
+{% block content %}
+
+{# - Hero - #}
+<section class="home-hero text-center">
+    <span class="wk-date-pill mb-3 d-inline-block">14 juli 2026 &nbsp;&middot;&nbsp; 20:00 &nbsp;&middot;&nbsp; Stadion de Kuip</span>
+
+    <h1 class="wk-display home-h1 mb-3">
+        Een avond.<br>
+        <span class="wk-accent-text">Een stadion.</span>
+    </h1>
+
+    <p class="home-lead mx-auto mb-4">
+        De finaleavond van het WK Voetbal 2026, live in Stadion de Kuip.
+        Slechts 1.000 plaatsen beschikbaar - wees er bij.
+    </p>
+
+    {% if beschikbaar > 0 %}
+        <div class="d-flex gap-3 justify-content-center flex-wrap mb-4">
+            <a href="/register" class="wk-btn wk-btn-primary wk-btn-lg">Schrijf je in &rarr;</a>
+            <a href="/login" class="wk-btn wk-btn-ghost wk-btn-lg">Al een account</a>
+        </div>
+    {% else %}
+        <div class="wk-alert wk-alert-error d-inline-block mb-4">
+            Inschrijving gesloten - alle plaatsen zijn vergeven.
+        </div>
+    {% endif %}
+
+    {# Availability counter #}
+    <div class="home-avail mx-auto">
+        <div class="d-flex justify-content-between align-items-baseline mb-2">
+            <span class="wk-mono">Tickets beschikbaar</span>
+            <span class="wk-display" style="font-size:1.8rem">
+                {{ beschikbaar }}<span class="wk-muted-text" style="font-size:1.1rem"> / {{ totaal }}</span>
+            </span>
+        </div>
+        <div class="wk-progress">
+            <div class="wk-progress-fill"
+                 style="width: calc({{ totaal > 0 ? (((totaal - beschikbaar) / totaal) * 100)|round : 0 }}% - 6px)">
+            </div>
+        </div>
+    </div>
+</section>
+
+<hr class="wk-rule">
+
+{# - Venue: image + info - #}
+<div class="row g-4 align-items-stretch mb-2">
+    <div class="col-md-7">
+        <div class="home-venue-img">De Kuip &middot; Rotterdam</div>
+    </div>
+    <div class="col-md-5">
+        <p class="wk-mono mb-2">de locatie</p>
+        <p class="wk-display mb-1" style="font-size:1.75rem">Stadion de Kuip</p>
+        <p class="wk-muted-text mb-4" style="font-size:0.875rem">Van Zandvlietplein 1, Rotterdam</p>
+
+        <p class="wk-mono mb-2">tijdschema</p>
+        <div class="d-flex gap-4 mb-4">
+            <div>
+                <span class="wk-mono">deuren</span>
+                <span class="wk-display d-block" style="font-size:1.6rem">18:30</span>
+            </div>
+            <div>
+                <span class="wk-mono">aftrap</span>
+                <span class="wk-display d-block" style="font-size:1.6rem">20:00</span>
+            </div>
+            <div>
+                <span class="wk-mono">einde &plusmn;</span>
+                <span class="wk-display d-block" style="font-size:1.6rem">22:30</span>
+            </div>
+        </div>
+
+        <p class="wk-mono mb-1">capaciteit</p>
+        <span class="wk-display" style="font-size:2rem">1.000</span>
+        <span class="wk-muted-text ms-1" style="font-size:0.875rem">plaatsen - op=op</span>
+    </div>
+</div>
+
+<hr class="wk-rule">
+
+{# - Rules: two-column checklist - #}
+<div class="wk-card">
+    <p class="wk-mono mb-4">Huisregels</p>
+    <div class="row g-4">
+        <div class="col-md-6">
+            <p class="wk-display mb-3" style="font-size:1.35rem">&#10003; Welkom</p>
+            <ul class="home-rules-list">
+                <li>Geldig ID-bewijs</li>
+                <li>Sjaal of vlag</li>
+                <li>Stadionjas tegen regen</li>
+                <li>Goed humeur</li>
+            </ul>
+        </div>
+        <div class="col-md-6 home-rules-divider">
+            <p class="wk-display wk-accent-text mb-3" style="font-size:1.35rem">&#10005; Niet meenemen</p>
+            <ul class="home-rules-list home-rules-bad">
+                <li>Vuurwerk &amp; flares</li>
+                <li>Eigen eten of drinken</li>
+                <li>Tassen groter dan A4</li>
+                <li>Glaswerk &amp; blikjes</li>
+                <li>Selfiesticks of drones</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+{# - Bottom CTA - #}
+{% if beschikbaar > 0 %}
+<div class="wk-card d-flex justify-content-between align-items-center flex-wrap gap-3 mt-3">
+    <div>
+        <p class="wk-display mb-1" style="font-size:1.4rem">Klaar voor de avond van je leven?</p>
+        <p class="wk-muted-text mb-0" style="font-size:0.875rem">
+            Reserveer nu - er zijn nog maar {{ beschikbaar }} plekken over.
+        </p>
+    </div>
+    <a href="/register" class="wk-btn wk-btn-primary">Schrijf je in &rarr;</a>
+</div>
+{% endif %}
+
+{% endblock %}

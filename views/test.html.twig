@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <title>Route Testpagina - Fase 1-7</title>
+    <style>
+        body { font-family: sans-serif; max-width: 860px; margin: 2rem auto; padding: 0 1rem; background: #f5f5f5; }
+        h1 { border-bottom: 3px solid #333; padding-bottom: .5rem; }
+        h2 { margin-top: 2rem; background: #333; color: #fff; padding: .4rem .8rem; border-radius: 4px; font-size: 1rem; }
+        .card { background: #fff; border: 1px solid #ddd; border-radius: 6px; padding: 1rem 1.2rem; margin-bottom: 1rem; }
+        .card h3 { margin: 0 0 .5rem; font-size: .95rem; color: #444; }
+        .badge { display: inline-block; font-size: .7rem; font-weight: bold; padding: 2px 6px; border-radius: 3px; color: #fff; margin-right: 4px; }
+        .get  { background: #2a7ae2; }
+        .post { background: #d9534f; }
+        a.btn, button { display: inline-block; padding: .4rem .9rem; border-radius: 4px; border: none; cursor: pointer; font-size: .9rem; text-decoration: none; background: #2a7ae2; color: #fff; }
+        button { background: #d9534f; }
+        input, select { display: block; margin: .3rem 0 .6rem; padding: .35rem .5rem; border: 1px solid #ccc; border-radius: 4px; width: 100%; box-sizing: border-box; font-size: .9rem; }
+        label { font-size: .85rem; color: #555; }
+        .row { display: flex; gap: 1rem; }
+        .row .card { flex: 1; }
+        .note { font-size: .8rem; color: #888; margin-top: .4rem; }
+    </style>
+</head>
+<body>
+
+<h1>Route Testpagina - Fase 1-7</h1>
+<p>Standalone testpagina. Raakt <strong>geen</strong> bestaande applicatiecode aan.</p>
+
+<!-- ------─ FASE 2 - GET routes ------─ -->
+<h2>Fase 2 - GET routes (navigatie)</h2>
+
+<div class="row">
+    <div class="card">
+        <h3><span class="badge get">GET</span> / - Homepage</h3>
+        <a class="btn" href="/">Open homepage</a>
+        <p class="note">Verwacht: evenementinfo + beschikbare plaatsen.</p>
+    </div>
+    <div class="card">
+        <h3><span class="badge get">GET</span> /register - Inschrijfformulier</h3>
+        <a class="btn" href="/register">Open registratieformulier</a>
+        <p class="note">Verwacht: formulier met alle velden zichtbaar.</p>
+    </div>
+</div>
+
+<div class="row">
+    <div class="card">
+        <h3><span class="badge get">GET</span> /login - Loginformulier</h3>
+        <a class="btn" href="/login">Open loginpagina</a>
+        <p class="note">Verwacht: e-mail + wachtwoord veld.</p>
+    </div>
+    <div class="card">
+        <h3><span class="badge get">GET</span> /profile - Fan-pagina</h3>
+        <a class="btn" href="/profile">Open profielpagina</a>
+        <p class="note">Verwacht: doorsturen naar /login als geen sessie actief.</p>
+    </div>
+</div>
+
+<div class="row">
+    <div class="card">
+        <h3><span class="badge get">GET</span> /admin - Admin-dashboard</h3>
+        <a class="btn" href="/admin">Open admin-pagina</a>
+        <p class="note">Verwacht: doorsturen naar /login als geen admin-sessie actief.</p>
+    </div>
+    <div class="card" style="background:#f9f9f9; border-style:dashed;"></div>
+</div>
+
+<!-- ------─ FASE 4 - Registratie ------─ -->
+<h2>Fase 4 - POST /register (RegistrationController::store)</h2>
+
+<div class="row">
+    <div class="card">
+        <h3><span class="badge post">POST</span> /register - Geldig formulier</h3>
+        <form action="/register" method="post">
+            <label>Naam</label><input name="naam" value="Test Gebruiker">
+            <label>Adres</label><input name="adres" value="Teststraat 1">
+            <label>Woonplaats</label><input name="woonplaats" value="Rotterdam">
+            <label>Telefoonnummer</label><input name="telefoonnummer" value="0612345678">
+            <label>E-mailadres</label><input name="email" value="test@example.com">
+            <label>Geboortedatum</label><input type="date" name="geboortedatum" value="2000-01-01">
+            <label>Geslacht</label>
+            <select name="geslacht">
+                <option value="man">Man</option>
+                <option value="vrouw">Vrouw</option>
+                <option value="anders">Anders</option>
+            </select>
+            <label>Wachtwoord</label><input type="password" name="wachtwoord" value="Testpass1">
+            <label>Herhaal wachtwoord</label><input type="password" name="wachtwoord_herhaal" value="Testpass1">
+            <button type="submit">Verstuur</button>
+        </form>
+        <p class="note">Verwacht: redirect naar /login + bevestigingsflash.</p>
+    </div>
+    <div class="card">
+        <h3><span class="badge post">POST</span> /register - Validatiefouten</h3>
+        <form action="/register" method="post">
+            <label>Naam</label><input name="naam" value="">
+            <label>Adres</label><input name="adres" value="">
+            <label>Woonplaats</label><input name="woonplaats" value="">
+            <label>Telefoonnummer</label><input name="telefoonnummer" value="">
+            <label>E-mailadres (ongeldig)</label><input name="email" value="geen-email">
+            <label>Geboortedatum</label><input type="date" name="geboortedatum" value="">
+            <label>Geslacht</label><select name="geslacht"><option value="">Kies...</option></select>
+            <label>Wachtwoord (te kort)</label><input type="password" name="wachtwoord" value="123">
+            <label>Herhaal wachtwoord</label><input type="password" name="wachtwoord_herhaal" value="456">
+            <button type="submit">Verstuur</button>
+        </form>
+        <p class="note">Verwacht: foutmeldingen + velden blijven ingevuld.</p>
+    </div>
+</div>
+
+<!-- ------─ FASE 5 - Authenticatie ------─ -->
+<h2>Fase 5 - POST /login + POST /logout (AuthController)</h2>
+
+<div class="row">
+    <div class="card">
+        <h3><span class="badge post">POST</span> /login - Inloggen als fan</h3>
+        <form action="/login" method="post">
+            <label>E-mailadres</label><input name="email" value="test@example.com">
+            <label>Wachtwoord</label><input type="password" name="wachtwoord" value="Testpass1">
+            <button type="submit">Inloggen</button>
+        </form>
+        <p class="note">Verwacht: redirect naar /profile.</p>
+    </div>
+    <div class="card">
+        <h3><span class="badge post">POST</span> /login - Inloggen als admin</h3>
+        <form action="/login" method="post">
+            <label>Gebruikersnaam</label><input name="email" value="admin">
+            <label>Wachtwoord</label><input type="password" name="wachtwoord" value="#1Geheim">
+            <button type="submit">Inloggen als admin</button>
+        </form>
+        <p class="note">Verwacht: redirect naar /admin.</p>
+    </div>
+</div>
+
+<div class="row">
+    <div class="card">
+        <h3><span class="badge post">POST</span> /login - Fout wachtwoord</h3>
+        <form action="/login" method="post">
+            <label>E-mailadres</label><input name="email" value="test@example.com">
+            <label>Wachtwoord (fout)</label><input type="password" name="wachtwoord" value="verkeerd">
+            <button type="submit">Inloggen</button>
+        </form>
+        <p class="note">Verwacht: foutmelding, geen toegang.</p>
+    </div>
+    <div class="card">
+        <h3><span class="badge post">POST</span> /logout - Uitloggen</h3>
+        <form action="/logout" method="post">
+            <button type="submit">Uitloggen</button>
+        </form>
+        <p class="note">Verwacht: sessie vernietigd, redirect naar /.</p>
+    </div>
+</div>
+
+<!-- ------─ FASE 6 - Fan-profiel ------─ -->
+<h2>Fase 6 - POST /profile/update + /profile/delete (FanController)</h2>
+
+<div class="row">
+    <div class="card">
+        <h3><span class="badge post">POST</span> /profile/update - Gegevens aanpassen</h3>
+        <form action="/profile/update" method="post">
+            <label>Naam</label><input name="naam" value="Gewijzigde Naam">
+            <label>Adres</label><input name="adres" value="Nieuwstraat 99">
+            <label>Woonplaats</label><input name="woonplaats" value="Amsterdam">
+            <label>Telefoonnummer</label><input name="telefoonnummer" value="0687654321">
+            <label>Geboortedatum</label><input type="date" name="geboortedatum" value="1995-06-15">
+            <label>Geslacht</label>
+            <select name="geslacht">
+                <option value="man">Man</option>
+                <option value="vrouw" selected>Vrouw</option>
+                <option value="anders">Anders</option>
+            </select>
+            <button type="submit">Opslaan</button>
+        </form>
+        <p class="note">Verwacht: gegevens opgeslagen, succesbericht. Vereist actieve fan-sessie.</p>
+    </div>
+    <div class="card">
+        <h3><span class="badge post">POST</span> /profile/delete - Uitschrijven</h3>
+        <p>Verwijdert het ingelogde fan-account permanent en logt uit.</p>
+        <form action="/profile/delete" method="post">
+            <button type="submit">Uitschrijven (account verwijderen)</button>
+        </form>
+        <p class="note">Verwacht: account weg uit DB, sessie vernietigd, redirect naar /. Vereist actieve fan-sessie.</p>
+    </div>
+</div>
+
+<!-- ------─ FASE 7 - Admin ------─ -->
+<h2>Fase 7 - POST /admin/accounts/{id}/delete + /approve-ticket (AdminController)</h2>
+
+<div class="row">
+    <div class="card">
+        <h3><span class="badge post">POST</span> /admin/accounts/{id}/delete</h3>
+        <form action="" method="post"
+              onsubmit="this.action='/admin/accounts/'+document.getElementById('del-id').value+'/delete'">
+            <label>Account ID om te verwijderen</label>
+            <input id="del-id" type="number" value="1" min="1">
+            <button type="submit">Verwijder account</button>
+        </form>
+        <p class="note">Verwacht: account weg, redirect naar /admin. Vereist admin-sessie.</p>
+    </div>
+    <div class="card">
+        <h3><span class="badge post">POST</span> /admin/accounts/{id}/approve-ticket</h3>
+        <form action="" method="post"
+              onsubmit="this.action='/admin/accounts/'+document.getElementById('appr-id').value+'/approve-ticket'">
+            <label>Account ID om ticket te bevestigen</label>
+            <input id="appr-id" type="number" value="1" min="1">
+            <button type="submit">Bevestig ticket</button>
+        </form>
+        <p class="note">Verwacht: has_ticket → true, zichtbaar in /admin. Vereist admin-sessie.</p>
+    </div>
+</div>
+
+<hr style="margin-top:2rem;">
+<p class="note">Testpagina - verwijder dit bestand voor productie.</p>
+
+</body>
+</html>

@@ -12,15 +12,17 @@ class AbstractController
     protected ?Request $request = null;
     public function render(string $template, ?array $vars = []): Response
     {
-        $templatePath = BASE_PATH . '/views/'; 
-        $loader = new FilesystemLoader($templatePath);
-        $twig = new Environment($loader);
+        $loader = new FilesystemLoader(BASE_PATH . '/views/');
+        $twig   = new Environment($loader);
+
+        $vars = array_merge([
+            'is_logged_in' => !empty($_SESSION['user_id']),
+            'is_admin'     => !empty($_SESSION['is_admin']),
+        ], $vars ?? []);
 
         $content = $twig->render($template, $vars);
 
-        $response = new Response($content);
-
-        return $response;
+        return new Response($content);
     }
 
     public function setRequest(Request $request): void

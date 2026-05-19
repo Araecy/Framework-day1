@@ -1,0 +1,72 @@
+/* home.css - page-specific layout only */
+
+.home-hero {
+    padding: 3.5rem 0 2rem;
+}
+
+.home-h1 {
+    font-size: clamp(3rem, 8vw, 5.5rem);
+}
+
+.home-lead {
+    font-size: 1.1rem;
+    color: var(--wk-ink2);
+    max-width: 520px;
+    line-height: 1.6;
+}
+
+.home-avail {
+    max-width: 420px;
+}
+
+.home-venue-img {
+    background: var(--wk-ink);
+    border-radius: 4px;
+    min-height: 260px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Cutive Mono', monospace;
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: rgba(250,247,240,0.22);
+}
+
+/* Rules checklist */
+.home-rules-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.home-rules-list li {
+    font-size: 0.95rem;
+    color: var(--wk-ink2);
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.home-rules-list li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: #2e7d32;
+    font-weight: 700;
+}
+
+.home-rules-bad li::before {
+    content: '✕';
+    color: var(--wk-accent);
+}
+
+/* Dashed divider between rule columns on md+ */
+@media (min-width: 768px) {
+    .home-rules-divider {
+        border-left: 1.5px dashed var(--wk-muted);
+    }
+}

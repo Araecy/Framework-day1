@@ -1,0 +1,76 @@
+/* admin.css - page-specific layout only */
+
+.admin-stat {
+    min-width: 120px;
+    text-align: center;
+}
+
+.admin-table-wrap {
+    overflow-x: auto;
+    border-radius: 4px;
+}
+
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.875rem;
+}
+
+.admin-table thead tr {
+    border-bottom: 1.5px dashed var(--wk-ink);
+}
+
+.admin-table thead th {
+    font-family: 'Cutive Mono', monospace;
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--wk-muted);
+    padding: 0.85rem 1rem;
+    white-space: nowrap;
+    font-weight: 400;
+}
+
+.admin-table tbody tr {
+    border-bottom: 1px dashed var(--wk-paper2);
+    transition: background 0.1s;
+}
+
+.admin-table tbody tr:last-child {
+    border-bottom: none;
+}
+
+.admin-table tbody tr:nth-child(even) {
+    background: rgba(0,0,0,0.018);
+}
+
+.admin-table tbody tr:hover {
+    background: var(--wk-paper2);
+}
+
+.admin-table td {
+    padding: 0.75rem 1rem;
+    color: var(--wk-ink2);
+    vertical-align: middle;
+}
+
+.admin-id {
+    font-family: 'Cutive Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--wk-muted) !important;
+}
+
+.admin-name {
+    font-weight: 600;
+    color: var(--wk-ink) !important;
+}
+
+.admin-email {
+    color: var(--wk-muted) !important;
+    font-size: 0.82rem;
+}
+
+.admin-mono {
+    font-family: 'Cutive Mono', monospace;
+    font-size: 0.78rem;
+}

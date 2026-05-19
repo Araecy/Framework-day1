@@ -1,55 +1,87 @@
-<!DOCTYPE html>
-<html lang="nl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin — WK Finale</title>
-</head>
-<body>
-    <h1>Alle inschrijvingen</h1>
-    <p>Totaal: {{ total }} / 1.000</p>
+{% extends 'layout.html.twig' %}
 
-    <form action="/logout" method="post">
-        <button type="submit">Uitloggen</button>
-    </form>
+{% block title %}Admin - Inschrijvingen{% endblock %}
 
-    <table>
-        <thead>
-            <tr>
-                <th>#</th>
-                <th>Naam</th>
-                <th>E-mail</th>
-                <th>Woonplaats</th>
-                <th>Telefoonnummer</th>
-                <th>Geboortedatum</th>
-                <th>Geslacht</th>
-                <th>Ticket</th>
-                <th>Verwijderen</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for account in accounts %}
-            <tr>
-                <td>{{ account.id }}</td>
-                <td>{{ account.naam }}</td>
-                <td>{{ account.email }}</td>
-                <td>{{ account.woonplaats }}</td>
-                <td>{{ account.telefoonnummer }}</td>
-                <td>{{ account.geboortedatum }}</td>
-                <td>{{ account.geslacht }}</td>
-                <td>{{ account.hasTicket ? 'Ja' : 'Nee' }}</td>
-                <td>
-                    <form action="/admin/accounts/{{ account.id }}/delete" method="post">
-                        <button type="submit">X</button>
-                    </form>
-                </td>
-            </tr>
-            {% else %}
-                <tr>
-                    <td colspan="9">Geen inschrijvingen gevonden.</td>
-                </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-</body>
-</html>
+{% block styles %}
+<link rel="stylesheet" href="/css/admin.css">
+{% endblock %}
+
+{% block content %}
+
+{# - Header + stats - #}
+<div class="d-flex justify-content-between align-items-end flex-wrap gap-2 mb-4">
+    <div>
+        <p class="wk-mono mb-1">overzicht</p>
+        <p class="wk-display mb-0" style="font-size:2rem">Alle inschrijvingen</p>
+    </div>
+    <div class="d-flex gap-3">
+        <div class="admin-stat wk-card py-2 px-3">
+            <span class="wk-mono">Totaal</span>
+            <span class="wk-display d-block" style="font-size:1.8rem">{{ total }}</span>
+            <span class="wk-muted-text" style="font-size:0.78rem">van 1.000</span>
+        </div>
+        {% set confirmed = 0 %}
+        {% for a in accounts %}{% if a.hasTicket %}{% set confirmed = confirmed + 1 %}{% endif %}{% endfor %}
+        <div class="admin-stat wk-card py-2 px-3">
+            <span class="wk-mono">Bevestigd</span>
+            <span class="wk-display wk-accent-text d-block" style="font-size:1.8rem">{{ confirmed }}</span>
+            <span class="wk-muted-text" style="font-size:0.78rem">tickets</span>
+        </div>
+    </div>
+</div>
+
+{% if total == 0 %}
+    <div class="wk-alert wk-alert-info">Nog geen inschrijvingen gevonden.</div>
+{% else %}
+    <div class="wk-card p-0">
+        <div class="admin-table-wrap">
+            <table class="admin-table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Naam</th>
+                        <th>E-mail</th>
+                        <th>Woonplaats</th>
+                        <th>Telefoon</th>
+                        <th>Geboortedatum</th>
+                        <th>Geslacht</th>
+                        <th>Ticket</th>
+                        <th>Verwijder</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for account in accounts %}
+                    <tr>
+                        <td class="admin-id">{{ account.id }}</td>
+                        <td class="admin-name">{{ account.naam }}</td>
+                        <td class="admin-email">{{ account.email }}</td>
+                        <td>{{ account.woonplaats }}</td>
+                        <td class="admin-mono">{{ account.telefoonnummer }}</td>
+                        <td class="admin-mono">{{ account.geboortedatum }}</td>
+                        <td>{{ account.geslacht|capitalize }}</td>
+                        <td>
+                            {% if account.hasTicket %}
+                                <span class="wk-badge wk-badge-success-fill">Bevestigd</span>
+                            {% else %}
+                                <form action="/admin/accounts/{{ account.id }}/approve-ticket" method="post" class="m-0">
+                                    <button type="submit" class="wk-btn wk-btn-sm">Bevestigen</button>
+                                </form>
+                            {% endif %}
+                        </td>
+                        <td>
+                            <form action="/admin/accounts/{{ account.id }}/delete" method="post" class="m-0">
+                                <button type="submit" class="wk-btn wk-btn-danger wk-btn-sm"
+                                        onclick="return confirm('Inschrijving verwijderen?')">
+                                    Verwijder ↩
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endif %}
+
+{% endblock %}

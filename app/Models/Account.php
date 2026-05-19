@@ -119,4 +119,5 @@ class Account
     public function setGeboortedatum(string $gbd): void { $this->geboortedatum = $gbd; }
     public function setGeslacht(string $geslacht): void { $this->geslacht = $geslacht; }
     public function setWachtwoordHash(string $hash): void { $this->wachtwoord_hash = $hash; }
+    public function setHasTicket(bool $val): void { $this->has_ticket = $val; }
 }

@@ -53,7 +53,7 @@ Yess
 
 Geef aan wat er goed/fout ging.
 
-Een aantal routing issues die ik via ai heb opgelost. Was meer een verschil tussen mijn persoonlijke geheuge die windows gewend is terwijl ik nu op een MAC werk waar een foutje was dat als gewoonlijk weer dood simpel was om optelossen. kernel.php moest Kernel.php zijn. Dat was een foutje. Windows doet daar niet zo moelijk over apple daarintegen rekent op een exacte naam. Kwam er pas achter toen ik dat ging testen
+Twig heeft handled css anders als dat ik had bedacht. Ik had niet gekeken naar hoe je css koppelt alleen naar het functionele deel voor mijn programma. Waardoor ik wat extra tijd kwijt was aan css linken voor dat ik aan het schrijven kon. Omdat ik de bootstrap cdn wel prettig vind maar ook teveel clutter vind geven dacht ik toch terug naar css te gaan om wat van de clutter te verminderen. 
 
 AI
 Opdracht 1:

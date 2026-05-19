@@ -1,74 +1,141 @@
-<!DOCTYPE html>
-<html lang="nl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mijn inschrijving — WK Finale</title>
-</head>
-<body>
-    <h1>Mijn inschrijving</h1>
+{% extends 'layout.html.twig' %}
 
-    <p>
-        Ticket status:
-        <strong>{{ account.hasTicket ? 'BEVESTIGD' : 'IN BEHANDELING' }}</strong>
-    </p>
+{% block title %}Mijn Inschrijving{% endblock %}
 
-    {% if errors is defined and errors|length > 0 %}
-        <ul>
-            {% for error in errors %}
-                <li>{{ error }}</li>
-            {% endfor %}
-        </ul>
-    {% endif %}
+{% block styles %}
+<link rel="stylesheet" href="/css/profile.css">
+{% endblock %}
 
-    {% if success is defined %}
-        <p>{{ success }}</p>
-    {% endif %}
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-lg-8">
 
-    <form action="/profile/update" method="post">
-        <div>
-            <label for="naam">Naam</label>
-            <input type="text" name="naam" id="naam" value="{{ account.naam }}" required>
-        </div>
-        <div>
-            <label for="adres">Adres</label>
-            <input type="text" name="adres" id="adres" value="{{ account.adres }}" required>
-        </div>
-        <div>
-            <label for="woonplaats">Woonplaats</label>
-            <input type="text" name="woonplaats" id="woonplaats" value="{{ account.woonplaats }}" required>
-        </div>
-        <div>
-            <label for="telefoonnummer">Telefoonnummer</label>
-            <input type="tel" name="telefoonnummer" id="telefoonnummer" value="{{ account.telefoonnummer }}" required>
-        </div>
-        <div>
-            <label for="email">E-mailadres</label>
-            <input type="email" id="email" value="{{ account.email }}" disabled>
-        </div>
-        <div>
-            <label for="geboortedatum">Geboortedatum</label>
-            <input type="date" name="geboortedatum" id="geboortedatum" value="{{ account.geboortedatum }}" required>
-        </div>
-        <div>
-            <label for="geslacht">Geslacht</label>
-            <select name="geslacht" id="geslacht">
-                <option value="man" {{ account.geslacht == 'man' ? 'selected' : '' }}>Man</option>
-                <option value="vrouw" {{ account.geslacht == 'vrouw' ? 'selected' : '' }}>Vrouw</option>
-                <option value="anders" {{ account.geslacht == 'anders' ? 'selected' : '' }}>Anders</option>
-            </select>
-        </div>
-        <button type="submit">Opslaan</button>
-    </form>
+        {# - Boarding-pass ticket status - #}
+        <div class="profile-ticket wk-card mb-4">
+            <div class="d-flex justify-content-between align-items-start flex-wrap gap-3">
+                <div>
+                    <p class="wk-mono mb-1">jouw e-ticket</p>
+                    <p class="wk-display mb-1" style="font-size:1.6rem">WK Voetbal Finale 2026</p>
+                    <p class="wk-muted-text mb-0" style="font-size:0.875rem">
+                        Stadion de Kuip - 19 juli 2026
+                    </p>
+                </div>
+                <div class="text-end">
+                    <p class="wk-mono mb-1">status</p>
+                    {% if account.hasTicket %}
+                        <span class="wk-badge wk-badge-success-fill">Bevestigd</span>
+                    {% else %}
+                        <span class="wk-badge wk-badge-pending">In behandeling</span>
+                    {% endif %}
+                </div>
+            </div>
 
-    <hr>
+            <hr class="wk-rule" style="margin:1rem 0">
 
-    <form action="/profile/delete" method="post">
-        <button type="submit">Uitschrijven</button>
-    </form>
+            <div class="d-flex gap-4 flex-wrap">
+                <div>
+                    <span class="wk-mono">datum</span>
+                    <span class="wk-display d-block" style="font-size:1.4rem">19 · 07 · 2026</span>
+                </div>
+                <div>
+                    <span class="wk-mono">aftrap</span>
+                    <span class="wk-display d-block" style="font-size:1.4rem">20:00</span>
+                </div>
+                <div>
+                    <span class="wk-mono">deuren</span>
+                    <span class="wk-display d-block" style="font-size:1.4rem">14:00</span>
+                </div>
+                <div>
+                    <span class="wk-mono">naam</span>
+                    <span class="wk-display d-block" style="font-size:1.4rem">{{ account.naam }}</span>
+                </div>
+            </div>
+        </div>
 
-    <form action="/logout" method="post">
-        <button type="submit">Uitloggen</button>
-    </form>
-</body>
-</html>
+        {# - Edit form - #}
+        <div class="wk-card">
+            <div class="wk-card-header">Mijn gegevens</div>
+
+            {% if errors is defined and errors|length > 0 %}
+                <div class="wk-alert wk-alert-error mb-4">
+                    <ul>
+                        {% for error in errors %}
+                            <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+
+            {% if success is defined %}
+                <div class="wk-alert wk-alert-success mb-4">{{ success }}</div>
+            {% endif %}
+
+            <form action="/profile/update" method="post">
+                <div class="row g-3">
+                    <div class="col-12">
+                        <label for="naam" class="wk-label">Naam</label>
+                        <input type="text" class="wk-input" name="naam" id="naam"
+                               value="{{ account.naam }}" required>
+                    </div>
+                    <div class="col-12">
+                        <label for="adres" class="wk-label">Adres</label>
+                        <input type="text" class="wk-input" name="adres" id="adres"
+                               value="{{ account.adres }}" required>
+                    </div>
+                    <div class="col-md-8">
+                        <label for="woonplaats" class="wk-label">Woonplaats</label>
+                        <input type="text" class="wk-input" name="woonplaats" id="woonplaats"
+                               value="{{ account.woonplaats }}" required>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="telefoonnummer" class="wk-label">Telefoon</label>
+                        <input type="tel" class="wk-input" name="telefoonnummer" id="telefoonnummer"
+                               value="{{ account.telefoonnummer }}" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="wk-label">E-mailadres</label>
+                        <input type="email" class="wk-input" value="{{ account.email }}" disabled>
+                        <p class="wk-hint">E-mailadres kan niet worden gewijzigd.</p>
+                    </div>
+                    <div class="col-md-3">
+                        <label for="geboortedatum" class="wk-label">Geboortedatum</label>
+                        <input type="date" class="wk-input" name="geboortedatum" id="geboortedatum"
+                               value="{{ account.geboortedatum }}" required>
+                    </div>
+                    <div class="col-md-3">
+                        <label for="geslacht" class="wk-label">Geslacht</label>
+                        <select class="wk-input" name="geslacht" id="geslacht">
+                            <option value="man"   {{ account.geslacht == 'man'   ? 'selected' : '' }}>Man</option>
+                            <option value="vrouw" {{ account.geslacht == 'vrouw' ? 'selected' : '' }}>Vrouw</option>
+                            <option value="anders"{{ account.geslacht == 'anders'? 'selected' : '' }}>Anders</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="mt-4">
+                    <button type="submit" class="wk-btn wk-btn-primary">Opslaan</button>
+                </div>
+            </form>
+
+            <hr class="wk-rule">
+
+            {# - Unregister - separate form, never nested - #}
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <p class="wk-mono mb-1">uitschrijven</p>
+                    <p class="wk-muted-text mb-0" style="font-size:0.85rem">
+                        Je account wordt permanent verwijderd.
+                    </p>
+                </div>
+                <form action="/profile/delete" method="post">
+                    <button type="submit" class="wk-btn wk-btn-danger wk-btn-sm"
+                            onclick="return confirm('Weet je zeker dat je je wilt uitschrijven? Je account wordt permanent verwijderd.')">
+                        UITSCHRIJVEN
+                    </button>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>
+{% endblock %}

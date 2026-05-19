@@ -1,0 +1,302 @@
+/* ============================================================
+   WK KUIP - Shared Design System
+   Tokens → Typography → Layout → Components
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Cutive+Mono&display=swap');
+
+/* - Design tokens - */
+:root {
+  --wk-ink:    #1a1714;
+  --wk-ink2:   #3a342e;
+  --wk-muted:  #8a857d;
+  --wk-paper:  #faf7f0;
+  --wk-paper2: #f1ece1;
+  --wk-accent: #ff6b1a;
+}
+
+/* - Base - */
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  background: var(--wk-paper);
+  color: var(--wk-ink);
+  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+}
+
+main.container { flex: 1; }
+
+a { color: var(--wk-accent); text-decoration: none; }
+a:hover { color: var(--wk-ink); text-decoration: underline; }
+
+/* - Typography - */
+.wk-display {
+  font-family: 'Caveat', cursive;
+  font-weight: 700;
+  line-height: 0.95;
+  color: var(--wk-ink);
+  margin: 0;
+}
+
+.wk-mono {
+  font-family: 'Cutive Mono', monospace;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--wk-muted);
+  display: block;
+}
+
+.wk-accent-text { color: var(--wk-accent) !important; }
+.wk-muted-text  { color: var(--wk-muted)  !important; }
+
+/* - Navbar - */
+.kuip-nav {
+  background: var(--wk-paper) !important;
+  border-bottom: 1.5px dashed var(--wk-ink);
+  padding: 0.75rem 0;
+}
+
+.kuip-nav.admin-bar {
+  background: var(--wk-ink) !important;
+  border-bottom: 2px solid var(--wk-accent);
+}
+
+.kuip-brand {
+  font-family: 'Caveat', cursive !important;
+  font-size: 1.45rem !important;
+  font-weight: 700 !important;
+  color: var(--wk-ink) !important;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  line-height: 1;
+}
+
+.admin-bar .kuip-brand        { color: var(--wk-paper) !important; }
+.admin-bar .wk-btn            { border-color: rgba(250,247,240,0.45); color: var(--wk-paper); }
+.admin-bar .wk-btn:hover      { background: rgba(250,247,240,0.1); color: var(--wk-paper); }
+.admin-bar .wk-mono           { color: rgba(250,247,240,0.55); }
+
+/* - Footer - */
+.kuip-footer {
+  border-top: 1.5px dashed var(--wk-muted);
+  padding: 1.25rem 0;
+  margin-top: auto;
+  background: transparent;
+}
+
+/* - Cards - */
+.wk-card {
+  background: var(--wk-paper2);
+  border: 1.5px solid var(--wk-ink);
+  border-radius: 4px;
+  padding: 1.5rem;
+}
+
+.wk-card-header {
+  font-family: 'Cutive Mono', monospace;
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--wk-muted);
+  padding-bottom: 0.75rem;
+  margin-bottom: 1.25rem;
+  border-bottom: 1.5px dashed var(--wk-muted);
+}
+
+/* - Buttons - */
+.wk-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.9rem;
+  padding: 0.5rem 1.2rem;
+  border-radius: 3px;
+  border: 1.5px solid var(--wk-ink);
+  background: transparent;
+  color: var(--wk-ink);
+  cursor: pointer;
+  text-decoration: none !important;
+  transition: background 0.12s, color 0.12s, border-color 0.12s;
+  white-space: nowrap;
+  line-height: 1.2;
+  vertical-align: middle;
+}
+
+.wk-btn:hover,
+.wk-btn:focus {
+  background: var(--wk-paper2);
+  color: var(--wk-ink);
+  text-decoration: none;
+  outline: none;
+}
+
+.wk-btn-primary {
+  background: var(--wk-accent);
+  border-color: var(--wk-accent);
+  color: #fff;
+}
+.wk-btn-primary:hover,
+.wk-btn-primary:focus {
+  background: #e05510;
+  border-color: #e05510;
+  color: #fff;
+}
+
+.wk-btn-ghost {
+  border-color: var(--wk-muted);
+  color: var(--wk-muted);
+}
+.wk-btn-ghost:hover {
+  background: var(--wk-paper2);
+  border-color: var(--wk-ink2);
+  color: var(--wk-ink2);
+}
+
+.wk-btn-danger {
+  border-color: var(--wk-accent);
+  color: var(--wk-accent);
+  background: transparent;
+}
+.wk-btn-danger:hover {
+  background: var(--wk-accent);
+  color: #fff;
+}
+
+.wk-btn-sm { font-size: 0.78rem; padding: 0.3rem 0.85rem; }
+.wk-btn-lg { font-size: 1rem;    padding: 0.65rem 1.75rem; }
+
+/* - Form inputs - */
+.wk-label {
+  display: block;
+  font-family: 'Cutive Mono', monospace;
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--wk-muted);
+  margin-bottom: 0.35rem;
+}
+
+.wk-required { color: var(--wk-accent); }
+
+.wk-input {
+  display: block;
+  width: 100%;
+  background: var(--wk-paper);
+  border: 1.5px solid var(--wk-ink);
+  border-radius: 3px;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.95rem;
+  color: var(--wk-ink);
+  transition: border-color 0.12s;
+  line-height: 1.5;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.wk-input:focus {
+  outline: none;
+  border-color: var(--wk-accent);
+}
+
+.wk-input[disabled],
+.wk-input:disabled {
+  background: var(--wk-paper2);
+  color: var(--wk-muted);
+  border-color: var(--wk-muted);
+  cursor: not-allowed;
+}
+
+select.wk-input {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='12' height='7' viewBox='0 0 12 7'%3e%3cpath d='M1 1l5 5 5-5' stroke='%238a857d' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  padding-right: 2.25rem;
+  cursor: pointer;
+}
+
+.wk-hint {
+  font-size: 0.78rem;
+  color: var(--wk-muted);
+  margin-top: 0.3rem;
+}
+
+/* - Alerts / Flash messages - */
+.wk-alert {
+  border-radius: 4px;
+  padding: 0.85rem 1.1rem;
+  font-size: 0.9rem;
+  border: 1.5px solid currentColor;
+  line-height: 1.5;
+}
+
+.wk-alert ul { margin: 0; padding-left: 1.25rem; }
+.wk-alert li { margin-bottom: 0.15rem; }
+
+.wk-alert-error   { color: var(--wk-accent); background: #fff5f0; }
+.wk-alert-success { color: #2e7d32;          background: #f0faf0; }
+.wk-alert-info    { color: var(--wk-ink2);   background: var(--wk-paper2); border-color: var(--wk-muted); }
+
+/* - Status badges - */
+.wk-badge {
+  display: inline-flex;
+  align-items: center;
+  border: 1.5px solid currentColor;
+  padding: 0.2rem 0.7rem;
+  border-radius: 999px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+}
+
+.wk-badge-accent        { color: var(--wk-accent); }
+.wk-badge-success       { color: #2e7d32; }
+.wk-badge-success-fill  { color: #fff; background: #2e7d32; border-color: #2e7d32; }
+.wk-badge-pending       { color: var(--wk-ink2); border-color: var(--wk-muted); }
+.wk-badge-muted         { color: var(--wk-muted); }
+
+/* - Availability progress bar - */
+.wk-progress {
+  height: 14px;
+  background: transparent;
+  border: 1.4px solid var(--wk-ink);
+  border-radius: 7px;
+  position: relative;
+}
+
+.wk-progress-fill {
+  position: absolute;
+  left: 3px;
+  top: 3px;
+  bottom: 3px;
+  background: var(--wk-accent);
+  border-radius: 5px;
+  min-width: 0;
+}
+
+/* - Date pill - */
+.wk-date-pill {
+  display: inline-block;
+  font-family: 'Cutive Mono', monospace;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--wk-accent);
+  border: 1.5px solid var(--wk-accent);
+  border-radius: 999px;
+  padding: 0.2rem 0.9rem;
+}
+
+/* - Horizontal rule - */
+.wk-rule {
+  border: none;
+  border-top: 1.5px dashed var(--wk-muted);
+  margin: 2rem 0;
+}

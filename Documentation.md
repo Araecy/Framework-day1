@@ -1,9 +1,9 @@
-# Beroepsexamen K1 — Realiseert Software
-### Projectplan — WK Voetbal Finale Inschrijfsysteem
+# Beroepsexamen K1 - Realiseert Software
+### Projectplan - WK Voetbal Finale Inschrijfsysteem
 
 **Student:** Noah Wijnman
 **Datum:** 2026-05-19
-**Opleiding:** Software Developer — BOL NIV 4 | CREBO 25604
+**Opleiding:** Software Developer - BOL NIV 4 | CREBO 25604
 **Kerntaak:** B1-K1 Realiseert software
 **Opdrachtgever:** Stadion de Kuip
 
@@ -90,7 +90,7 @@ Een werkende PHP-webapplicatie, gehost op de schoolserver (Plesk), waarmee fans 
 
 ## 2. Planning
 
-**Totale beschikbare tijd: 13 uur (Opdracht 2 — Realisatie)**
+**Totale beschikbare tijd: 13 uur (Opdracht 2 - Realisatie)**
 
 | Fase | Activiteit | Tijd |
 |------|-----------|------|
@@ -102,15 +102,15 @@ Een werkende PHP-webapplicatie, gehost op de schoolserver (Plesk), waarmee fans 
 | 6 | `FanController` (profiel bekijken, gegevens aanpassen, uitschrijven) | 1 uur |
 | 7 | `AdminController` (alle inschrijvingen tonen, verwijderen) | 1 uur |
 | 8 | Twig-views aanmaken: `home`, `register`, `login`, `profile`, `admin` | 1,5 uur |
-| 9 | **Eerste testmoment** — routes, formulieren, sessies, database-opslag controleren | 30 min |
+| 9 | **Eerste testmoment** - routes, formulieren, sessies, database-opslag controleren | 30 min |
 | 10 | Foutafhandeling, invoervalidatie, sessiebeveiliging per pagina | 45 min |
 | 11 | Basisopmaak via CSS CDN (Bootstrap of Pico CSS) | 45 min |
-| 12 | **Tweede testmoment** — alle use cases volledig doorlopen | 30 min |
+| 12 | **Tweede testmoment** - alle use cases volledig doorlopen | 30 min |
 | 13 | Buffer voor onverwachte problemen | 1,5 uur |
 | 14 | Code opschonen, commentaar, code-conventies controleren | 30 min |
 | **Totaal** | | **13 uur** |
 
-> Testmomenten zijn bewust ingepland tijdens de realisatie — niet alleen aan het einde.
+> Testmomenten zijn bewust ingepland tijdens de realisatie - niet alleen aan het einde.
 > De buffer van 1,5 uur wordt ingezet als een eerdere fase uitloopt.
 
 ---
@@ -214,7 +214,7 @@ Een werkende PHP-webapplicatie, gehost op de schoolserver (Plesk), waarmee fans 
 
 ### 3.3 Wireframes
 
-#### Scherm 1 — Homepage (`/`)
+#### Scherm 1 - Homepage (`/`)
 
 ```
 +----------------------------------------------------------+
@@ -222,7 +222,7 @@ Een werkende PHP-webapplicatie, gehost op de schoolserver (Plesk), waarmee fans 
 +----------------------------------------------------------+
 |                                                          |
 |   WK VOETBAL FINALE 2026                                 |
-|   Zondag 19 juli — Stadion opent om 14:00 uur            |
+|   Zondag 19 juli - Stadion opent om 14:00 uur            |
 |                                                          |
 |   --------------------------------------------------------|
 |   REGELS VOOR BEZOEKERS                                  |
@@ -239,14 +239,14 @@ Een werkende PHP-webapplicatie, gehost op de schoolserver (Plesk), waarmee fans 
 +----------------------------------------------------------+
 ```
 
-#### Scherm 2 — Inschrijfformulier (`/register`)
+#### Scherm 2 - Inschrijfformulier (`/register`)
 
 ```
 +----------------------------------------------------------+
 |  STADION DE KUIP                          [Inloggen]     |
 +----------------------------------------------------------+
 |                                                          |
-|   INSCHRIJVEN — WK FINALE                                |
+|   INSCHRIJVEN - WK FINALE                                |
 |                                                          |
 |   Naam           [ ________________________________ ]    |
 |   Adres          [ ________________________________ ]    |
@@ -265,7 +265,7 @@ Een werkende PHP-webapplicatie, gehost op de schoolserver (Plesk), waarmee fans 
 +----------------------------------------------------------+
 ```
 
-#### Scherm 3 — Loginpagina (`/login`)
+#### Scherm 3 - Loginpagina (`/login`)
 
 ```
 +----------------------------------------------------------+
@@ -284,7 +284,7 @@ Een werkende PHP-webapplicatie, gehost op de schoolserver (Plesk), waarmee fans 
 +----------------------------------------------------------+
 ```
 
-#### Scherm 4 — Fan-pagina / Profiel (`/profile`)
+#### Scherm 4 - Fan-pagina / Profiel (`/profile`)
 
 ```
 +----------------------------------------------------------+
@@ -310,11 +310,11 @@ Een werkende PHP-webapplicatie, gehost op de schoolserver (Plesk), waarmee fans 
 +----------------------------------------------------------+
 ```
 
-#### Scherm 5 — Admin-pagina (`/admin`)
+#### Scherm 5 - Admin-pagina (`/admin`)
 
 ```
 +----------------------------------------------------------+
-|  STADION DE KUIP — ADMIN                  [Uitloggen]    |
+|  STADION DE KUIP - ADMIN                  [Uitloggen]    |
 +----------------------------------------------------------+
 |                                                          |
 |   ALLE INSCHRIJVINGEN                                    |
@@ -364,24 +364,24 @@ Een werkende PHP-webapplicatie, gehost op de schoolserver (Plesk), waarmee fans 
 
 | Techniek | Toepassing |
 |----------|-----------|
-| PHP 8.x | Server-side programmeertaal — routing, business logic, database-interactie, sessies |
-| MySQL | Relationele database — aangemaakt en beheerd via Plesk op de schoolserver |
+| PHP 8.x | Server-side programmeertaal - routing, business logic, database-interactie, sessies |
+| MySQL | Relationele database - aangemaakt en beheerd via Plesk op de schoolserver |
 | HTML5 | Structuur van de Twig-templates |
 | CSS / Bootstrap CDN | Basisopmaak van de gebruikersinterface |
-| Twig | Template engine — strikte scheiding van logica en presentatie |
-| PDO | Database-abstraction layer — veilige queries via prepared statements |
-| FastRoute | URL-routing — koppelt URI-patronen aan controllermethoden |
-| PHP Sessions | Authenticatie — sessie aanmaken bij inloggen, vernietigen bij uitloggen |
+| Twig | Template engine - strikte scheiding van logica en presentatie |
+| PDO | Database-abstraction layer - veilige queries via prepared statements |
+| FastRoute | URL-routing - koppelt URI-patronen aan controllermethoden |
+| PHP Sessions | Authenticatie - sessie aanmaken bij inloggen, vernietigen bij uitloggen |
 | `password_hash()` | Wachtwoorden worden gehasht met bcrypt vóór opslag in de database |
-| Composer PSR-4 | Autoloading — klassen worden automatisch geladen op basis van namespace |
-| MVC | Architectuurpatroon — scheiding van Model, View en Controller |
+| Composer PSR-4 | Autoloading - klassen worden automatisch geladen op basis van namespace |
+| MVC | Architectuurpatroon - scheiding van Model, View en Controller |
 
 **Ontwikkelomgeving:**
 
 | Tool | Gebruik |
 |------|---------|
 | Visual Studio Code | Code-editor |
-| Plesk / FileZilla | Deployment — bestanden geüpload naar schoolserver via Plesk of FTP |
+| Plesk / FileZilla | Deployment - bestanden geüpload naar schoolserver via Plesk of FTP |
 | phpMyAdmin (via Plesk) | Database aanmaken en beheren |
 | Composer | PHP dependency management |
 | Git | Versiebeheer van de broncode |
@@ -401,36 +401,36 @@ Het project volgt het MVC-patroon binnen een zelfgebouwd PHP micro-framework (*A
 
 ```
 Framework/
-├── public/
-│   └── index.php                       # Front Controller — enig HTTP-toegangspunt
-├── routes/
-│   └── web.php                         # Route-definities
-├── app/
-│   ├── Controllers/
-│   │   ├── HomeController.php          # Homepagina (evenementinfo)
-│   │   ├── RegistrationController.php  # Inschrijven
-│   │   ├── AuthController.php          # Inloggen / uitloggen
-│   │   ├── FanController.php           # Fan-pagina (profiel, aanpassen, uitschrijven)
-│   │   └── AdminController.php         # Admin-dashboard
-│   └── Models/
-│       └── Account.php                 # Model voor fans (CRUD, wachtwoord-hashing)
-├── src/                                # Framework-kern
-│   ├── Http/
-│   │   ├── Kernel.php                  # Dispatcht requests via FastRoute
-│   │   ├── Request.php                 # Singleton — wraps $_SERVER, $_POST, $_GET
-│   │   └── Response.php               # HTTP response
-│   ├── Controllers/
-│   │   └── AbstractController.php     # Basiscontroller — render() via Twig
-│   └── Database/
-│       └── Connection.php             # Singleton PDO-verbinding
-├── views/
-│   ├── home.html.twig                  # Homepage
-│   ├── register.html.twig             # Inschrijfformulier
-│   ├── login.html.twig                # Loginformulier
-│   ├── profile.html.twig              # Fan-pagina
-│   └── admin.html.twig                # Admin-dashboard
-└── database/
-    └── config.php                     # Database-verbindingsconfiguratie (buiten webroot)
+├- public/
+│   └- index.php                       # Front Controller - enig HTTP-toegangspunt
+├- routes/
+│   └- web.php                         # Route-definities
+├- app/
+│   ├- Controllers/
+│   │   ├- HomeController.php          # Homepagina (evenementinfo)
+│   │   ├- RegistrationController.php  # Inschrijven
+│   │   ├- AuthController.php          # Inloggen / uitloggen
+│   │   ├- FanController.php           # Fan-pagina (profiel, aanpassen, uitschrijven)
+│   │   └- AdminController.php         # Admin-dashboard
+│   └- Models/
+│       └- Account.php                 # Model voor fans (CRUD, wachtwoord-hashing)
+├- src/                                # Framework-kern
+│   ├- Http/
+│   │   ├- Kernel.php                  # Dispatcht requests via FastRoute
+│   │   ├- Request.php                 # Singleton - wraps $_SERVER, $_POST, $_GET
+│   │   └- Response.php               # HTTP response
+│   ├- Controllers/
+│   │   └- AbstractController.php     # Basiscontroller - render() via Twig
+│   └- Database/
+│       └- Connection.php             # Singleton PDO-verbinding
+├- views/
+│   ├- home.html.twig                  # Homepage
+│   ├- register.html.twig             # Inschrijfformulier
+│   ├- login.html.twig                # Loginformulier
+│   ├- profile.html.twig              # Fan-pagina
+│   └- admin.html.twig                # Admin-dashboard
+└- database/
+    └- config.php                     # Database-verbindingsconfiguratie (buiten webroot)
 ```
 
 **Request-flow:**
@@ -502,17 +502,17 @@ CREATE TABLE `EX_DB_102953`.`accounts` (
 
 | Methode | URI | Controller | Actie |
 |---------|-----|-----------|-------|
-| GET | `/` | HomeController | `index` — evenementinfo + plaatsen teller |
-| GET | `/register` | RegistrationController | `create` — registratieformulier |
-| POST | `/register` | RegistrationController | `store` — validatie, opslaan, bevestigingsmail |
-| GET | `/login` | AuthController | `create` — loginformulier |
-| POST | `/login` | AuthController | `store` — sessie aanmaken |
-| POST | `/logout` | AuthController | `destroy` — sessie vernietigen |
-| GET | `/profile` | FanController | `show` — fan-pagina (sessiecheck) |
-| POST | `/profile/update` | FanController | `update` — gegevens opslaan |
-| POST | `/profile/delete` | FanController | `destroy` — uitschrijven |
-| GET | `/admin` | AdminController | `index` — alle inschrijvingen (admin sessiecheck) |
-| POST | `/admin/accounts/{id:\d+}/delete` | AdminController | `destroy` — inschrijving verwijderen |
+| GET | `/` | HomeController | `index` - evenementinfo + plaatsen teller |
+| GET | `/register` | RegistrationController | `create` - registratieformulier |
+| POST | `/register` | RegistrationController | `store` - validatie, opslaan, bevestigingsmail |
+| GET | `/login` | AuthController | `create` - loginformulier |
+| POST | `/login` | AuthController | `store` - sessie aanmaken |
+| POST | `/logout` | AuthController | `destroy` - sessie vernietigen |
+| GET | `/profile` | FanController | `show` - fan-pagina (sessiecheck) |
+| POST | `/profile/update` | FanController | `update` - gegevens opslaan |
+| POST | `/profile/delete` | FanController | `destroy` - uitschrijven |
+| GET | `/admin` | AdminController | `index` - alle inschrijvingen (admin sessiecheck) |
+| POST | `/admin/accounts/{id:\d+}/delete` | AdminController | `destroy` - inschrijving verwijderen |
 
 ### 4.5 Privacy & Veiligheid
 
@@ -550,9 +550,9 @@ Het project wordt opgeleverd binnen de beschikbare examenstijd van **3 dagen**:
 
 | Dag | Opdracht | Activiteit |
 |-----|---------|-----------|
-| Dag 1 | Opdracht 1 — Voorbereiding | Casus analyseren, projectplan schrijven, ontwerp uitwerken |
-| Dag 2 | Opdracht 2 — Realisatie | Applicatie bouwen (13 uur) |
-| Dag 3 | Opdracht 3 — Testen & Verbetervoorstellen | Testen, testrapport invullen, verbetervoorstellen formuleren |
+| Dag 1 | Opdracht 1 - Voorbereiding | Casus analyseren, projectplan schrijven, ontwerp uitwerken |
+| Dag 2 | Opdracht 2 - Realisatie | Applicatie bouwen (13 uur) |
+| Dag 3 | Opdracht 3 - Testen & Verbetervoorstellen | Testen, testrapport invullen, verbetervoorstellen formuleren |
 
 ### 5.2 Testplan
 
@@ -568,8 +568,8 @@ Het project wordt opgeleverd binnen de beschikbare examenstijd van **3 dagen**:
 
 **In welke fase worden de tests gedaan?**
 
-- **Eerste testmoment (tijdens realisatie):** Na fase 8 — routes, formulieren en database-opslag controleren.
-- **Tweede testmoment (tijdens realisatie):** Na fase 11 — alle use cases doorlopen.
+- **Eerste testmoment (tijdens realisatie):** Na fase 8 - routes, formulieren en database-opslag controleren.
+- **Tweede testmoment (tijdens realisatie):** Na fase 11 - alle use cases doorlopen.
 - **Volledig testmoment (dag 3):** Alle tests uit het testplan systematisch uitvoeren en vastleggen in het testrapport.
 
 **Door wie wordt er getest?**
@@ -584,12 +584,12 @@ De testresultaten worden vastgelegd in het **testrapport** (zie sectie hieronder
 
 | Test-ID | Testgebied | Testtype | Invoer | Verwacht resultaat |
 |---------|-----------|---------|--------|-------------------|
-| T-01 | Registratie — geldig | Functioneel | Volledig ingevuld formulier | Account opgeslagen, bevestigingsmail verstuurd |
-| T-02 | Registratie — lege velden | Validatie | Leeg formulier verzenden | Foutmelding per veld; niets opgeslagen |
-| T-03 | Registratie — duplicaat e-mail | Validatie | Reeds geregistreerd e-mailadres | Foutmelding; geen dubbel account |
-| T-04 | Registratie — limiet bereikt | Grenswaarde | 1.001e inschrijving | Inschrijving geblokkeerd; melding getoond |
-| T-05 | Inloggen — juiste gegevens | Functioneel | Geldig e-mail + wachtwoord | Sessie aangemaakt; doorgestuurd naar `/profile` |
-| T-06 | Inloggen — verkeerd wachtwoord | Validatie | Verkeerd wachtwoord | Foutmelding; geen toegang |
+| T-01 | Registratie - geldig | Functioneel | Volledig ingevuld formulier | Account opgeslagen, bevestigingsmail verstuurd |
+| T-02 | Registratie - lege velden | Validatie | Leeg formulier verzenden | Foutmelding per veld; niets opgeslagen |
+| T-03 | Registratie - duplicaat e-mail | Validatie | Reeds geregistreerd e-mailadres | Foutmelding; geen dubbel account |
+| T-04 | Registratie - limiet bereikt | Grenswaarde | 1.001e inschrijving | Inschrijving geblokkeerd; melding getoond |
+| T-05 | Inloggen - juiste gegevens | Functioneel | Geldig e-mail + wachtwoord | Sessie aangemaakt; doorgestuurd naar `/profile` |
+| T-06 | Inloggen - verkeerd wachtwoord | Validatie | Verkeerd wachtwoord | Foutmelding; geen toegang |
 | T-07 | Gegevens aanpassen | Functioneel | Gewijzigde naam of adres | Wijzigingen opgeslagen en zichtbaar |
 | T-08 | Uitschrijven | Functioneel | Klik op "Uitschrijven" | Account verwijderd; uitgelogd; teruggestuurd naar homepage |
 | T-09 | Admin inloggen | Functioneel | `admin` / `#1Geheimv` | Toegang tot `/admin` |
@@ -604,27 +604,27 @@ De testresultaten worden vastgelegd in het **testrapport** (zie sectie hieronder
 
 | Test-ID | Geteste functionaliteit | Resultaat | Werkt? | Opmerking |
 |---------|------------------------|-----------|--------|-----------|
-| T-01 | Registratie — geldig | — | — | — |
-| T-02 | Registratie — lege velden | — | — | — |
-| T-03 | Registratie — duplicaat e-mail | — | — | — |
-| T-04 | Registratie — limiet bereikt | — | — | — |
-| T-05 | Inloggen — juiste gegevens | — | — | — |
-| T-06 | Inloggen — verkeerd wachtwoord | — | — | — |
-| T-07 | Gegevens aanpassen | — | — | — |
-| T-08 | Uitschrijven | — | — | — |
-| T-09 | Admin inloggen | — | — | — |
-| T-10 | Admin onjuiste login | — | — | — |
-| T-11 | Admin inschrijving verwijderen | — | — | — |
-| T-12 | Toegang zonder sessie | — | — | — |
-| T-13 | SQL-injectie poging | — | — | — |
-| T-14 | XSS-poging | — | — | — |
-| T-15 | Alle casuseisen aanwezig | — | — | — |
+| T-01 | Registratie - geldig | - | - | - |
+| T-02 | Registratie - lege velden | - | - | - |
+| T-03 | Registratie - duplicaat e-mail | - | - | - |
+| T-04 | Registratie - limiet bereikt | - | - | - |
+| T-05 | Inloggen - juiste gegevens | - | - | - |
+| T-06 | Inloggen - verkeerd wachtwoord | - | - | - |
+| T-07 | Gegevens aanpassen | - | - | - |
+| T-08 | Uitschrijven | - | - | - |
+| T-09 | Admin inloggen | - | - | - |
+| T-10 | Admin onjuiste login | - | - | - |
+| T-11 | Admin inschrijving verwijderen | - | - | - |
+| T-12 | Toegang zonder sessie | - | - | - |
+| T-13 | SQL-injectie poging | - | - | - |
+| T-14 | XSS-poging | - | - | - |
+| T-15 | Alle casuseisen aanwezig | - | - | - |
 
 **Conclusie testrapport:** *(in te vullen na dag 3)*
 
 ### Verbetervoorstellen
 
-*(In te vullen op basis van testresultaten — zie ook `IMPROVEMENTS.md` voor voorbereide suggesties.)*
+*(In te vullen op basis van testresultaten - zie ook `IMPROVEMENTS.md` voor voorbereide suggesties.)*
 
 **a. Welke onderdelen moeten verbeterd worden en hoe?**
 
@@ -680,7 +680,7 @@ De database draait op de schoolserver via Plesk:
 
 ## 6. Inlog informatie
 
-**Fan-account (testaccount — aan te maken tijdens de realisatie):**
+**Fan-account (testaccount - aan te maken tijdens de realisatie):**
 
 | Gegeven | Waarde |
 |---------|--------|
@@ -699,4 +699,4 @@ De database draait op de schoolserver via Plesk:
 
 ---
 
-*Document bijgewerkt: 2026-05-19 — Casus verwerkt: WK Voetbal Finale, Stadion de Kuip.*
+*Document bijgewerkt: 2026-05-19 - Casus verwerkt: WK Voetbal Finale, Stadion de Kuip.*
