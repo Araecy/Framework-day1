@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inschrijven — WK Finale</title>
+</head>
+<body>
+    <h1>Inschrijven — WK Finale</h1>
+
+    <!-- ticket display (price and veneu information) -->
+     <!-- layout left form right ticket display -->
+
+    {% if errors is defined and errors|length > 0 %}
+        <ul>
+            {% for error in errors %}
+                <li>{{ error }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <form action="/register" method="post">
+        <div>
+            <label for="naam">Naam</label>
+            <input type="text" name="naam" id="naam" required>
+        </div>
+        <div>
+            <label for="adres">Adres</label>
+            <input type="text" name="adres" id="adres" required>
+        </div>
+        <div>
+            <label for="woonplaats">Woonplaats</label>
+            <input type="text" name="woonplaats" id="woonplaats" required>
+        </div>
+        <div>
+            <label for="telefoonnummer">Telefoonnummer</label>
+            <input type="tel" name="telefoonnummer" id="telefoonnummer" required>
+        </div>
+        <div>
+            <label for="email">E-mailadres</label>
+            <input type="email" name="email" id="email" required>
+        </div>
+        <div>
+            <label for="geboortedatum">Geboortedatum</label>
+            <input type="date" name="geboortedatum" id="geboortedatum" required>
+        </div>
+        <div>
+            <label for="geslacht">Geslacht</label>
+            <select name="geslacht" id="geslacht">
+                <option value="man">Man</option>
+                <option value="vrouw">Vrouw</option>
+                <option value="anders">Anders</option>
+            </select>
+        </div>
+        <div>
+            <label for="wachtwoord">Wachtwoord</label>
+            <input type="password" name="wachtwoord" id="wachtwoord" required>
+        </div>
+        <div>
+            <label for="wachtwoord_herhaal">Herhaal wachtwoord</label>
+            <input type="password" name="wachtwoord_herhaal" id="wachtwoord_herhaal" required>
+        </div>
+        <button type="submit">Inschrijven</button>
+    </form>
+
+    <p>Al ingeschreven? <a href="/login">Inloggen</a></p>
+</body>
+</html>

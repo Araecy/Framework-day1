@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mijn inschrijving — WK Finale</title>
+</head>
+<body>
+    <h1>Mijn inschrijving</h1>
+
+    <p>
+        Ticket status:
+        <strong>{{ account.hasTicket ? 'BEVESTIGD' : 'IN BEHANDELING' }}</strong>
+    </p>
+
+    {% if errors is defined and errors|length > 0 %}
+        <ul>
+            {% for error in errors %}
+                <li>{{ error }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    {% if success is defined %}
+        <p>{{ success }}</p>
+    {% endif %}
+
+    <form action="/profile/update" method="post">
+        <div>
+            <label for="naam">Naam</label>
+            <input type="text" name="naam" id="naam" value="{{ account.naam }}" required>
+        </div>
+        <div>
+            <label for="adres">Adres</label>
+            <input type="text" name="adres" id="adres" value="{{ account.adres }}" required>
+        </div>
+        <div>
+            <label for="woonplaats">Woonplaats</label>
+            <input type="text" name="woonplaats" id="woonplaats" value="{{ account.woonplaats }}" required>
+        </div>
+        <div>
+            <label for="telefoonnummer">Telefoonnummer</label>
+            <input type="tel" name="telefoonnummer" id="telefoonnummer" value="{{ account.telefoonnummer }}" required>
+        </div>
+        <div>
+            <label for="email">E-mailadres</label>
+            <input type="email" id="email" value="{{ account.email }}" disabled>
+        </div>
+        <div>
+            <label for="geboortedatum">Geboortedatum</label>
+            <input type="date" name="geboortedatum" id="geboortedatum" value="{{ account.geboortedatum }}" required>
+        </div>
+        <div>
+            <label for="geslacht">Geslacht</label>
+            <select name="geslacht" id="geslacht">
+                <option value="man" {{ account.geslacht == 'man' ? 'selected' : '' }}>Man</option>
+                <option value="vrouw" {{ account.geslacht == 'vrouw' ? 'selected' : '' }}>Vrouw</option>
+                <option value="anders" {{ account.geslacht == 'anders' ? 'selected' : '' }}>Anders</option>
+            </select>
+        </div>
+        <button type="submit">Opslaan</button>
+    </form>
+
+    <hr>
+
+    <form action="/profile/delete" method="post">
+        <button type="submit">Uitschrijven</button>
+    </form>
+
+    <form action="/logout" method="post">
+        <button type="submit">Uitloggen</button>
+    </form>
+</body>
+</html>

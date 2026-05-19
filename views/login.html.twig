@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inloggen — WK Finale</title>
+</head>
+<body>
+    <h1>Inloggen</h1>
+
+    {% if error is defined %}
+        <p>{{ error }}</p>
+    {% endif %}
+
+    <form action="/login" method="post">
+        <div>
+            <label for="email">E-mailadres</label>
+            <input type="text" name="email" id="email" required>
+        </div>
+        <div>
+            <label for="wachtwoord">Wachtwoord</label>
+            <input type="password" name="wachtwoord" id="wachtwoord" required>
+        </div>
+        <button type="submit">Inloggen</button>
+    </form>
+
+    <p>Nog niet ingeschreven? <a href="/register">Inschrijven</a></p>
+</body>
+</html>

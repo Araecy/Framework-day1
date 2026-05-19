@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Form</title>
+</head>
+
+<body>
+	<form action="/books" method="POST">
+        <div>
+            {# type #}
+            <div><label for="">Type</label></div>
+            <select name="type">
+                <option value="book">book</option>
+                <option value="test">test</option>
+                <option value="test">test2</option>
+            </select>
+        </div>
+
+		<div>
+			<div><label for="">Title</label></div>
+			<input type="text" name="title">
+		</div>
+		<div>
+			<div><label for="">Content</label></div>
+			<textarea name="content"></textarea>
+		</div>
+		<div>
+			<button type="submit">Create</button>
+		</div>
+	</form>
+</body>
+
+</html>

@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(type \"d:\\\\xampp\\\\htdocs\\\\Framework\\\\DOCUMENTATION.md\" 2>nul || echo \"FILE_NOT_FOUND\")",
+      "Bash(pandoc --version)",
+      "Bash(brew list *)",
+      "Bash(python3 -c \"import docx\")",
+      "Bash(python3 -c \"from docx import Document\")",
+      "Bash(brew install *)",
+      "Bash(pip3 install *)"
+    ],
+    "additionalDirectories": [
+      "d:\\xampp\\htdocs\\Framework"
+    ]
+  }
+}

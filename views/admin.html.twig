@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin — WK Finale</title>
+</head>
+<body>
+    <h1>Alle inschrijvingen</h1>
+    <p>Totaal: {{ total }} / 1.000</p>
+
+    <form action="/logout" method="post">
+        <button type="submit">Uitloggen</button>
+    </form>
+
+    <table>
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Naam</th>
+                <th>E-mail</th>
+                <th>Woonplaats</th>
+                <th>Telefoonnummer</th>
+                <th>Geboortedatum</th>
+                <th>Geslacht</th>
+                <th>Ticket</th>
+                <th>Verwijderen</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for account in accounts %}
+            <tr>
+                <td>{{ account.id }}</td>
+                <td>{{ account.naam }}</td>
+                <td>{{ account.email }}</td>
+                <td>{{ account.woonplaats }}</td>
+                <td>{{ account.telefoonnummer }}</td>
+                <td>{{ account.geboortedatum }}</td>
+                <td>{{ account.geslacht }}</td>
+                <td>{{ account.hasTicket ? 'Ja' : 'Nee' }}</td>
+                <td>
+                    <form action="/admin/accounts/{{ account.id }}/delete" method="post">
+                        <button type="submit">X</button>
+                    </form>
+                </td>
+            </tr>
+            {% else %}
+                <tr>
+                    <td colspan="9">Geen inschrijvingen gevonden.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
